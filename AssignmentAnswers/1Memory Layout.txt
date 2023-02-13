@@ -1,0 +1,39 @@
+Question 1
+
+If the stack and the heap meet in the middle, a buffer overflow (including stack overflow and heap overflow) will happen. If a buffer overflow happens, some memory will be overwritten and some important information may be damaged, that is called data corruption. Sometimes, the program will behave unexpected. Some attacker can use buffer overflow to attack, making the whole system unsafe.
+
+ 
+
+Reference:
+
+https://vickieli.medium.com/binary-exploitation-buffer-overflows-a9dc63e8b546Links to an external site.
+
+https://www.cloudflare.com/zh-cn/learning/security/threats/buffer-overflow/Links to an external site.
+
+https://en.ryte.com/wiki/Stack_Overflow
+
+ 
+
+Question 2
+
+A system call table is a mapping table between system call ID and the kernel address of implementation. By using system call table, no matter what OS version and machine a program is running on, it can correctly call kill or getkey. The system call table isolates program from OS version and different machines. In other words, we do not need to compile program for a new OS version or another machine. For example, when we want to display a character on the screen, with system call table what a program need to do is just use “putchar”. Without system call, the program have to go to a particular address of a machine. This address may be different on another machine and the program have to be compiled again.
+
+ 
+
+Reference:
+
+https://learn.microsoft.com/en-us/security/research/project-freta/report/kernel-system-call-tableLinks to an external site.
+
+ 
+
+Question 3
+
+The function calloc() needs 2 arguments, one is the number of elements to allocate and another is the memory size of these elements. The provided C code does not correctly use calloc(). Another problem is that we should change memset(&block, 0xFF, 2048); to memset(block, 0xFF, 2048);  Symbol ‘&’ is not needed.
+
+ 
+
+Reference:
+
+https://www.runoob.com/cprogramming/c-function-calloc.htmlLinks to an external site.
+
+https://www.runoob.com/cprogramming/c-function-memset.html

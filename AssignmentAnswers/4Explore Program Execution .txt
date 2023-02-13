@@ -1,0 +1,42 @@
+Instruction add (PC): 0x300
+Instruction: PUSH 0x800
+Registers and memory location modification: SP changes from 0x118 to 0x114, assign value 0x800 to address 0x114 [*(SP)=*(0x114)=0x800]
+
+Instruction add (PC): 0x304
+Instruction: PUSH *(0x804)
+Registers and memory location modification: SP changes from 0x114 to 0x110, assign value 0x200 to address 0x110 is [*(SP)=*(0x110)=0x200]
+
+Instruction add (PC): 0x308
+Instruction: CALL 0x400                   (PUSH PC+4 and JMP 0x400)
+Control flow destination: 0x400. CALL: PC changes from 0x308 to 0x400 (jump to 0x400), SP changes from 0x110 to 0x10C, assign value 0x30C to address 0x10C [*(SP) = *(0x10C) = 0x30C]
+
+Instruction add (PC): 0x400
+Instruction: MOV *(SP+8)->EAX
+Registers and memory location modification: from previous instruction, value stored in address SP+8 (0x10C+8 = 0x114) is 0x800, assign 0x800 to EAX. SP is still 0x10C
+
+Instruction add (PC): 0x404
+Instruction: MOV SP->*EAX
+Registers and memory location modification: assign value 0x10C to address 0x800 [*EAX = *(0x800) = 0x10C]
+
+Instruction add (PC): 0x408
+Instruction: MOV *(SP+4)->EAX
+Registers and memory location modification: assign value 0x200 (0x10C+4) to address 0x100 [EAX = *(0x110) = 0x200]
+
+Instruction add (PC): 0x40C
+Instruction: MOV EAX->SP
+Registers and memory location modification: SP changes from 0x10C to 0x200
+
+Instruction add (PC): 0x410
+Instruction: RET                           (POP PC)
+Control flow destination: 0x30C. assign value stored in address 0x200 (value is 0x500) to PC [PC = *(SP) = *(0x200) = 0x500]. SP = changes from 0x200 to 0x204
+
+Instruction add (PC): 0x500
+Instruction: POP EAX
+Registers and memory location modification: EAX = *(0x204) = 7, SP changes from 0x204 to 0x208
+
+Instruction add (PC): 0x504
+Instruction: POP EBX
+Registers and memory location modification: EBX = *(0x208) = 12, SP changes from 0x208 to 0x20C
+
+
+---DONE---
